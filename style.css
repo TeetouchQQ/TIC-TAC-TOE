@@ -1,0 +1,21 @@
+.show-grid{
+    grid-template-columns: auto auto auto;
+    display: grid;
+    padding: 30px;
+    background-color:darkgray;
+    width: 600px;
+    height: 600px;
+
+}
+.grid-item{
+    border: rgb(0, 0, 0) solid 2px;
+    text-align: center;
+    font-family: "Permanent Marker", cursive;
+    margin: 2px;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    line-height: 200px;
+    font-size: 150px;
+
+}
