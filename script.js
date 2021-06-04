@@ -1,4 +1,4 @@
-var game_display = document.getElementById('show-grid');
+
 var game_slot = [
     '','','',//
     '','','',//
@@ -18,8 +18,12 @@ winCondition = [
 ]
 player_1 = true;
 player_2 = false;
+var player1_score = 0;
+var player2_score = 0;
 
+turn = 0;
 function SwapTurn(){
+    turn += 1;
     if(player_1 == false){
         player_1 = true;
         player_2 = false;
@@ -28,6 +32,7 @@ function SwapTurn(){
         player_2 = true;
     }
     console.log('swap')
+    
 }
 
 function checkDisplay(slot){
@@ -40,7 +45,7 @@ function checkDisplay(slot){
 }
 
 function changeDisplay(mark,slot){
-    if (checkDisplay(slot)){
+    if (checkDisplay(slot) == true){
         game_slot[slot] = mark
         var grid = document.getElementById(slot);
         grid.innerHTML = mark
@@ -48,8 +53,22 @@ function changeDisplay(mark,slot){
 
 
 }
+function reset_game(){
+    for(var i=0;i<9;i++){
+        var grid = document.getElementById(i);
+        grid.innerHTML = '';        
+
+    }
+    game_slot = [
+        '','','',//
+        '','','',//
+        '','','' //
+    ]
+    turn = 0;
+    
+}
 function win_check(){
-    for(var i=0;i<7;i++){
+    for(var i=0;i<8;i++){
         var a = winCondition[i][0];
         var b = winCondition[i][1];
         var c = winCondition[i][2];
@@ -63,19 +82,27 @@ function win_check(){
         if(game_slot[a] === game_slot[b] && game_slot[a] === game_slot[c]){
             if(player_1 == true){
                 console.log('player 1 win')
-
-            }else{
+                player1_score += 1
+      
+            }else {
 
                 console.log('player 2 win')
+                player2_score += 1
+      
             }
 
         }
     }
+    player1 = document.getElementById('player1_score');
+    player1.innerHTML = player1_score;
+    player2 = document.getElementById('player2_score');
+    player2.innerHTML = player2_score;
 
 }
 
 function go(id){
     console.log(game_slot);
+    
     if(checkDisplay(id) == true){
         if(player_1 == true){
             console.log('Player 1 Turn!')
@@ -85,10 +112,13 @@ function go(id){
             changeDisplay('O',id)
             console.log('Player 2 Turn!')
         }
-        win_check();
+        
         SwapTurn();
+        
+        if(turn > 8){
+           console.log('DRAW')
+    
+        }
+    win_check();
     }
-    
-    
-
 }

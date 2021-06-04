@@ -10,10 +10,16 @@
 
 </head>
 <body>
-    <div class = 'header'>
-        TIC TAC TOE
-    </div>    
+ 
+       <p class='header'> TIC TAC TOE </p>
+ 
     <div class='container'>
+        <div class='col1' id='col'>
+            Player 1 Score : <p class='player1_score' id='player1_score'>0</p>
+        </div>
+        <div class='col2'>
+            Player 2 Score : <p class='player2_score' id='player2_score'>0</p>
+        </div>
         <div class='show-grid' id='show-grid'>
             <div class='grid-item' id='0' onclick="go(this.id);"></div>
             <div class='grid-item' id='1' onclick="go(this.id);"></div>
@@ -26,6 +32,7 @@
             <div class='grid-item' id='8'onclick="go(this.id);"></div>
 
         </div>
+        <button class='reset_board' onclick="reset_game();">Reset Board</button>
 
     </div>
 
