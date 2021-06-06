@@ -18,6 +18,7 @@ winCondition = [
 ]
 player_1 = true;
 player_2 = false;
+game_live = true;
 var player1_score = 0;
 var player2_score = 0;
 
@@ -65,6 +66,7 @@ function reset_game(){
         '','','' //
     ]
     turn = 0;
+    game_live = true;
     
 }
 function win_check(){
@@ -83,11 +85,13 @@ function win_check(){
             if(player_1 == true){
                 console.log('player 1 win')
                 player1_score += 1
+                game_live = false;
       
             }else {
 
                 console.log('player 2 win')
                 player2_score += 1
+                game_live = false;
       
             }
 
@@ -102,23 +106,27 @@ function win_check(){
 
 function go(id){
     console.log(game_slot);
-    
-    if(checkDisplay(id) == true){
-        if(player_1 == true){
-            console.log('Player 1 Turn!')
-            changeDisplay('X',id)
+    if(game_live == true){
+        if(checkDisplay(id) == true){
+            if(player_1 == true){
+                console.log('Player 1 Turn!')
+                changeDisplay('X',id)
 
-        }else{
-            changeDisplay('O',id)
-            console.log('Player 2 Turn!')
-        }
+            }else{
+                changeDisplay('O',id)
+                console.log('Player 2 Turn!')
+            }
+            
+            SwapTurn();
+            
+            if(turn > 8){
+                console.log('DRAW')
+                game_live = false;
         
-        SwapTurn();
-        
-        if(turn > 8){
-           console.log('DRAW')
-    
+            }
+        win_check();
         }
-    win_check();
+           
     }
+    
 }
