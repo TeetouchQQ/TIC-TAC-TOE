@@ -68,6 +68,7 @@ function reset_game(){
     ]
     turn = 0;
     game_live = true;
+    game_status.innerHTML = 'Player 1 Turn X ';
     
 }
 function win_check(){
@@ -128,6 +129,7 @@ function go(id){
             
             if(turn > 8){
                 console.log('DRAW')
+                game_status.innerHTML = 'DRAW';
                 game_live = false;
         
             }
