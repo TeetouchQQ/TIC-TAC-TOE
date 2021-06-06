@@ -1,4 +1,5 @@
-
+var game_status = document.getElementById('game_status');
+game_status.innerHTML = 'Player 1 Turn X ';
 var game_slot = [
     '','','',//
     '','','',//
@@ -84,12 +85,14 @@ function win_check(){
         if(game_slot[a] === game_slot[b] && game_slot[a] === game_slot[c]){
             if(player_1 == true){
                 console.log('player 1 win')
+                game_status.innerHTML = 'Player 1 win ';
                 player1_score += 1
                 game_live = false;
       
             }else {
 
                 console.log('player 2 win')
+                game_status.innerHTML = 'Player 2 win ';
                 player2_score += 1
                 game_live = false;
       
@@ -102,6 +105,8 @@ function win_check(){
     player2 = document.getElementById('player2_score');
     player2.innerHTML = player2_score;
 
+
+
 }
 
 function go(id){
@@ -110,11 +115,13 @@ function go(id){
         if(checkDisplay(id) == true){
             if(player_1 == true){
                 console.log('Player 1 Turn!')
+                game_status.innerHTML = 'Player 1 Turn O ';
                 changeDisplay('X',id)
 
             }else{
                 changeDisplay('O',id)
                 console.log('Player 2 Turn!')
+                game_status.innerHTML = 'Player 2 Turn X';
             }
             
             SwapTurn();

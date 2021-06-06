@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' href="style.css">
-    <script type='text/javascript' src='script.js'></script>
+    <script type='text/javascript' src='script.js' defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TIC TAC TOE</title>
@@ -20,6 +20,7 @@
         <div class='col2'>
             Player 2 Score : <p class='player2_score' id='player2_score'>0</p>
         </div>
+        <p class='game_status' id='game_status'></p>
         <div class='show-grid' id='show-grid'>
             <div class='grid-item' id='0' onclick="go(this.id);"></div>
             <div class='grid-item' id='1' onclick="go(this.id);"></div>
@@ -32,7 +33,7 @@
             <div class='grid-item' id='8'onclick="go(this.id);"></div>
 
         </div>
-        <button class='reset_board' onclick="reset_game();">Reset Board</button>
+        <button class='reset_board' id='reset_board' onclick="reset_game();">Reset Board</button>
 
     </div>
 
